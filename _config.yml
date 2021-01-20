@@ -103,10 +103,10 @@ page-mathjax: false
 # Friends
 friends: [
     {
-    #     title: "Su",
-    #     href: "http://su.gallery/"
-    # },{
-    #    title: "乱序（Midare）",
-    #    href: "http://mida.re/"
+         title: "Prof.Wang Wenwu",
+         href: "https://surrey.ac.uk/people/wenwu-wang"
+     },{
+        title: "Dr.Liu Yang",
+        href: "https://sanglongbest.github.io"
     }
 ]
