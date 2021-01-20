@@ -78,7 +78,7 @@ netease_comment: false # no Netease support
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Peipei WU, PhD student in CVSSP at University of Surrey."
+sidebar-about-description: "Peipei WU, PhD student in CVSSP at University of Surrey.Email:p.wu@surrey.ac.uk"
 sidebar-avatar: /img/sidebar_myself.JPG      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
