@@ -3,7 +3,7 @@ layout: post
 title: "Particle Flow Introduction"
 subtitle: "Summary of PFlow history"
 date: 2021-01-20
-author: "Hux"
+author: "Peipei WU"
 header-img: 
 header-style: text
 header-mask: 
