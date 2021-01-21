@@ -23,4 +23,10 @@ Hello there! Today I'm going to discuss and present Duam's excellent work about 
 
 ## Derivation of PDE
 Compute a flow of particles induced by the following flow of the conditional unnormalized probability density of x:
-$$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
+$$
+\log p(x,\lambda)=\log g(x)+\lambda logh(x)
+$$
+x is the d-dimensional state vector, g(x) denotes the prior unnormalized probability density of x, h(x) is likelihood. In other words, we can regard h(x) as measurement likelihood in our AV tracking system, such as certainty of vision or auditory detection (darknet, mask-rcnn and etc.). x is more similar to system  description, we will use this to represent how will algorithm to assign particles. Variable $\lambda$
+
+
+
