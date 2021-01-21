@@ -23,7 +23,7 @@ Hello there! Today I'm going to discuss and present Duam's excellent work about 
 4. Do not use importance sampling or any MCMC
 
 ## Derivation of PDE
-Compute a flow of particles induced by the following flow of the conditional unnormalized probability density of x:
+Compute a flow of particles induced by the following flow of the conditional unnormalized probability density of $x$:
 $$ 
 \log p(x,\lambda) = \log g(x) + \lambda \log h(x)
 $$,
@@ -59,7 +59,7 @@ div(q)=\eta=-p(x,\lambda)\log h(x)
 $$
 
 
-In which, $div$ denotes divergence. [^ 1] and  [^ 2] offer some distinct methods to solve PDEs upon.
+In which, $div$ denotes divergence. [^1] and  [^2] offer some distinct methods to solve PDEs upon.
 
 **In this part, we presents some work about PDEs and it will help to induce how will we assign the particles in flow.**
 
@@ -114,8 +114,8 @@ Thank you for your reading. This is my first studying note about particle flow w
 
 ## Referrence
 
-[^ 1]:Fred Daum, Jim Huang and AJ Noushin, “Exact particle flow for nonlinear filters,” Proceedings of SPIE Conference, Orlando Florida, April 2010.
-[^ 2]: Fred Daum and Jim Huang, “Exact particle flow for nonlinear filters: seventeen dubious solutions to a first order linear underdeteremined PDE,” Proceedings of IEEE Conference on Signals, Systems & Computers, Asilomar California, November 2010.
+[^1]:Fred Daum, Jim Huang and AJ Noushin, “Exact particle flow for nonlinear filters,” Proceedings of SPIE Conference, Orlando Florida, April 2010.
+[^2]: Fred Daum and Jim Huang, “Exact particle flow for nonlinear filters: seventeen dubious solutions to a first order linear underdeteremined PDE,” Proceedings of IEEE Conference on Signals, Systems & Computers, Asilomar California, November 2010.
 
 
 
