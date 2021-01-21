@@ -10,6 +10,8 @@ header-mask:
 tags: [particle flow]
 mathjax: true
 ---
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ tex2jax: {inlineMath: [['$','$'],['\\(','\\)']]} }); </script> <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script>
+
 # Study Notes About Particle Flow For Nonlinear Filters
 
 Hello there! Today I'm going to discuss and present Duam's excellent work about Particle Flow For Nonlinear Filters. Thanks to Dr. [Liu Yang](https://sanglongbest.github.io) again, this work is suggested by himself and very good for freshers to particle flow as me. Also, this note is one work record for myslef and will be discussed with my superviosr Professor [Wang Wenwu](https://surrey.ac.uk/people/wenwu-wang) this week. Let's have a look on this paper.
