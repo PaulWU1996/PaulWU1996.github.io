@@ -23,4 +23,4 @@ Hello there! Today I'm going to discuss and present Duam's excellent work about 
 
 ## Derivation of PDE
 Compute a flow of particles induced by the following flow of the conditional unnormalized probability density of x:
-$$logp(x,\lamda)$$  
+$$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}$$
