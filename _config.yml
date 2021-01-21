@@ -96,7 +96,8 @@ service-worker: true
 
 
 # MathJax rendering for layout:page (e.g. post preview)
-page-mathjax: false
+page-mathjax: true
+#https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js 
 
 
 
