@@ -69,7 +69,7 @@ It means that one distributed system consits several components, they are autono
 
 ## Endnote
 
-We just talked come basic concepts about distributed system today. Our goal is to implement one distributed AV tracking system with robust and in real time. We clearify the definition and give the standard rules for developing in the future. So sorry that I did not complete the comment API that hope readers can reply via email to [email](p.wu@surrey.ac.uk) .I gave up the API offered by Hux thus I need to write for myself, also thanks to him again!
+We just talked come basic concepts about distributed system today. Our goal is to implement one distributed AV tracking system with robust and in real time. We clearify the definition and give the standard rules for developing in the future. So sorry that I did not complete the comment API that hope readers can reply via email to <p.wu@surrey.ac.uk>.I gave up the API offered by Hux thus I need to write for myself, also thanks to Hux again!
 
 ## Reference
 
