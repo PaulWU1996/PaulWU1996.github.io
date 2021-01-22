@@ -76,7 +76,9 @@ Furthermore,we assume that the prior density and the likelihood are Gaussian den
 $$
 \frac{dx}{d\lambda}=A(\lambda)x+b(\lambda)
 $$
+
 in which
+
 $$
 A=-\frac{1}{2}PH^T(\lambda HPH^T+R)^{-1}H
 $$
