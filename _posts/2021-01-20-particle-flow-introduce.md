@@ -12,11 +12,9 @@ mathjax: true
 
 ---
 # Particle Flow given by Daum
-
 Hello, I'm going to take a walk on history of particle flow development. Also thanks to Dr. [Liu Yang](https://sanglongbest.github.io), he introduced particle flow to me and presented his excellent work in past. We are studied under same professor [Wang Wenwu](https://surrey.ac.uk/people/wenwu-wang) in CVSSP at University of Surrey. In this note, we do only summary main thinkings and contributions in development history, more details of each different particle fiow algorithm will be discussed in future. Of course, as a fresher, I cannot include everything in this note. If you find any mistakes or any suggestions, I hope you can point out and tell me please.
 
 ## Why we need particle flow
-
 In past, particle filter is one good solution in tracking task. I hope to use this method as one baseline in my AV tracking task. The fact that makes us to select particle flow not traditional particle filter is not good enough. There is no doubt that particle filter can mitigate the curse of dimensionality for certain filtering problems, however, it cannot avoid curse of dimensionality in general. Especially when situation becomes more complex, the number of dimension increases to big number, traditional filter cannot work well. To handle this problem, particle flow was introuduced.
 
 ## The history of particle flow
