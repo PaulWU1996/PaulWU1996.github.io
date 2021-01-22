@@ -72,6 +72,7 @@ In which, $div$ denotes divergence. [^1] and  [^2] offer some distinct methods t
 ## Separation of Variables
 
 Furthermore,we assume that the prior density and the likelihood are Gaussian densities, we can obatin a result for our particle flow corresponding to Bayes' rule:
+
 $$
 \frac{dx}{d\lambda}=A(\lambda)x+b(\lambda)
 $$
@@ -104,6 +105,7 @@ $$
 q_j=\tilde q_j + \int^{x_j}\eta(x,\lambda)- \tilde \eta(x,\lambda)dx_j
 $$
  for any $j$ of our choice ($q_j-\tilde q_j$ is non-zero component), and $q_i=\tilde q_i$ for $i \not =j$. This freedom offers us convience to solve PDE and accelerates up. For instance, if $\eta - \tilde \eta$ is approximately constant in $x_j$ , then:
+
 $$
 q_j \approx \tilde q_j + x_j (\eta-\tilde \eta)
 $$
