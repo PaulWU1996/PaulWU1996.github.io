@@ -83,6 +83,7 @@ $$
 $$
 B=(I+2\lambda A)[(I+\lambda A)PH^TR^{-1}z+A\overline x]
 $$
+
 $P$ is the covariance matrix of prediction errior in $x$ for the Gaussan prior density, $H$ is the measurement matrix $(z=Hx+v)$, R is the covariance matrix of measurement noise $(v)$. $\overline x$ denotes the predicted value of x, corresponding to mean value of prior Gaussian density.
 
 **Don't forget that**$\frac{dx}{d\lambda}$ **is what we want to obatin in previous, it is the probability to induce particle flow. Also, what we talk in this part means solving about PDEs can be used exp probability densities rather than gaussian densities, this can boost speed of algorithm!**
@@ -93,6 +94,7 @@ Suppose exact solution of PDE with same dimension is collected, also details are
 $$
 div(\tilde q)=\eta
 $$
+
 Of course, we can compute $A$ and $b$ by exploting $H$, $R$ and $P$. Combining those up:
 $$
 div(q-\tilde q)=\eta - \tilde \eta
@@ -101,7 +103,7 @@ Based on this, we can compute exact solution by integrating selected non-zero co
 $$
 q_j=\tilde q_j + \int^{x_j}\eta(x,\lambda)- \tilde \eta(x,\lambda)dx_j
 $$
-for any $j$ of our choice ($q_j-\tilde q_j$ is non-zero component), and $q_i=\tilde q_i$ for $i \not =j$. This freedom offers us convience to solve PDE and accelerates up. For instance, if $\eta - \tilde \eta$ is approximately constant in $x_j$ , then:
+ for any $j$ of our choice ($q_j-\tilde q_j$ is non-zero component), and $q_i=\tilde q_i$ for $i \not =j$. This freedom offers us convience to solve PDE and accelerates up. For instance, if $\eta - \tilde \eta$ is approximately constant in $x_j$ , then:
 $$
 q_j \approx \tilde q_j + x_j (\eta-\tilde \eta)
 $$
