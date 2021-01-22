@@ -25,53 +25,40 @@ Hello there! Today I'm going to discuss and present Duam's excellent work about 
 ## Derivation of PDE
 Compute a flow of particles induced by the following flow of the conditional unnormalized probability density of $x$:
 
-$$ 
+$$
 \log p(x,\lambda) = \log g(x) + \lambda \log h(x)
-$$,
+\$$
 
 $x$ is the d-dimensional state vector, $g(x)$ denotes the prior unnormalized probability density of $x$, $h(x)$ is likelihood. In other words, we can regard $h(x)$ as measurement likelihood in our AV tracking system, such as certainty of vision or auditory detection (darknet, mask-rcnn and etc.). $x$ is more similar to system  description, we will use this to represent how will algorithm to assign particles. Variable $\lambda$ is one real number parameter from 0 to 1, as described by author, they said that this parameter is similar to time but not really. Relate to equation given previously, I prefer regard it as one weight to represent the how important of measurement likelihood. For instance,  when  $\lambda = 0$ , $p(x,\lambda)$ is equal to the prior density, whereas  $\lambda = 1$ , the function is equal to the desired posteriori density of $x$ conditioned on all measurements (vision detection and audio detection) up to and including the current time. To simplfy it, it seems like to add measurements result on prediction given by previous frame. In the mean time, $\log$ is introduced to avoid singularities or any possible problems.
 
 
 
 Suppose there exists a continuous flow of particles induced by probabilty with following dynamics:
-
 $$
 \frac{dx}{d\lambda} = f (x,\lambda)
 $$
-
 Therefore, the probability density of $x$ will obey the Fokker-Planck equation throught this flow:
-
 $$
 \frac{\partial p(x,\lambda)}{\partial \lambda}= -Tr[\frac{\partial (p(x,\lambda)f(x,\lambda))}{\partial x}]
 $$
-
 Unfortunately I am not student in physics, using my own words to explain Fokker-Planck is that this is a nature rule of particles assignments after effected by ramdom force. If anybody knows details of it, please add them in comment.
 
 If there is no process noise in the flow of $x$ , it is possible to collect PDE for particle flow with non-zero diffusion. Based on definition of $p(x,\lambda)$ :
-
 $$
 \frac{\partial \log p(x,\lambda)}{\partial \lambda}=\log h(x)
 $$
-
 Combine above equation we can obtain a result:
-
 $$
 \log h(x)p(x,\lambda)=-p(x,\lambda)Tr[\frac{\partial f}{\partial x}]-\frac{\partial p}{\partial x}f
 $$
-
 Assuming $p(x,\lambda)$ always exists, the desired PDE:
-
 $$
 \log h=-div(f)-\frac{\partial \log p}{\partial x}f
 $$
-
 Put this PDE into divergence form by definning  $q(x,\lambda)=p(x,\lambda)f(x,\lambda)$:
-
 $$
 div(q)=\eta=-p(x,\lambda)\log h(x)
 $$
-
-
 In which, $div$ denotes divergence. [^1] and  [^2] offer some distinct methods to solve PDEs upon.
 
 **In this part, we presents some work about PDEs and it will help to induce how will we assign the particles in flow.**
@@ -79,13 +66,10 @@ In which, $div$ denotes divergence. [^1] and  [^2] offer some distinct methods t
 ## Separation of Variables
 
 Furthermore,we assume that the prior density and the likelihood are Gaussian densities, we can obatin a result for our particle flow corresponding to Bayes' rule:
-
 $$
 \frac{dx}{d\lambda}=A(\lambda)x+b(\lambda)
 $$
-
 in which
-
 $$
 A=-\frac{1}{2}PH^T(\lambda HPH^T+R)^{-1}H
 $$
@@ -93,7 +77,6 @@ $$
 $$
 B=(I+2\lambda A)[(I+\lambda A)PH^TR^{-1}z+A\overline x]
 $$
-
 $P$ is the covariance matrix of prediction errior in $x$ for the Gaussan prior density, $H$ is the measurement matrix $(z=Hx+v)$, R is the covariance matrix of measurement noise $(v)$. $\overline x$ denotes the predicted value of x, corresponding to mean value of prior Gaussian density.
 
 **Don't forget that**$\frac{dx}{d\lambda}$ **is what we want to obatin in previous, it is the probability to induce particle flow. Also, what we talk in this part means solving about PDEs can be used exp probability densities rather than gaussian densities, this can boost speed of algorithm!**
@@ -101,25 +84,18 @@ $P$ is the covariance matrix of prediction errior in $x$ for the Gaussan prior d
 ## Direct Integration 
 
 Suppose exact solution of PDE with same dimension is collected, also details are given in section derivation of PDE:
-
 $$
 div(\tilde q)=\eta
 $$
-
 Of course, we can compute $A$ and $b$ by exploting $H$, $R$ and $P$. Combining those up:
-
 $$
 div(q-\tilde q)=\eta - \tilde \eta
 $$
-
 Based on this, we can compute exact solution by integrating selected non-zero component:
-
 $$
 q_j=\tilde q_j + \int^{x_j}\eta(x,\lambda)- \tilde \eta(x,\lambda)dx_j
 $$
-
 for any $j$ of our choice ($q_j-\tilde q_j$ is non-zero component), and $q_i=\tilde q_i$ for $i \not =j$. This freedom offers us convience to solve PDE and accelerates up. For instance, if $\eta - \tilde \eta$ is approximately constant in $x_j$ , then:
-
 $$
 q_j \approx \tilde q_j + x_j (\eta-\tilde \eta)
 $$
