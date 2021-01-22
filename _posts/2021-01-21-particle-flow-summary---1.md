@@ -29,18 +29,21 @@ Compute a flow of particles induced by the following flow of the conditional unn
 $$
 \log p(x,\lambda) = \log g(x) + \lambda \log h(x)
 $$
+
 $x$ is the d-dimensional state vector, $g(x)$ denotes the prior unnormalized probability density of $x$, $h(x)$ is likelihood. In other words, we can regard $h(x)$ as measurement likelihood in our AV tracking system, such as certainty of vision or auditory detection (darknet, mask-rcnn and etc.). $x$ is more similar to system  description, we will use this to represent how will algorithm to assign particles. Variable $\lambda$ is one real number parameter from 0 to 1, as described by author, they said that this parameter is similar to time but not really. Relate to equation given previously, I prefer regard it as one weight to represent the how important of measurement likelihood. For instance,  when  $\lambda = 0$ , $p(x,\lambda)$ is equal to the prior density, whereas  $\lambda = 1$ , the function is equal to the desired posteriori density of $x$ conditioned on all measurements (vision detection and audio detection) up to and including the current time. To simplfy it, it seems like to add measurements result on prediction given by previous frame. In the mean time, $\log$ is introduced to avoid singularities or any possible problems.
 
 Suppose there exists a continuous flow of particles induced by probabilty with following dynamics:
 
-
-
+$$
 \frac{dx}{d\lambda} = f (x,\lambda)
 $$
+
 Therefore, the probability density of $x$ will obey the Fokker-Planck equation throught this flow:
+
 $$
 \frac{\partial p(x,\lambda)}{\partial \lambda}= -Tr[\frac{\partial (p(x,\lambda)f(x,\lambda))}{\partial x}]
 $$
+
 Unfortunately I am not student in physics, using my own words to explain Fokker-Planck is that this is a nature rule of particles assignments after effected by ramdom force. If anybody knows details of it, please add them in comment.
 
 If there is no process noise in the flow of $x$ , it is possible to collect PDE for particle flow with non-zero diffusion. Based on definition of $p(x,\lambda)$ :
