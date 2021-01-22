@@ -50,14 +50,17 @@ If there is no process noise in the flow of $x$ , it is possible to collect PDE 
 $$
 \frac{\partial \log p(x,\lambda)}{\partial \lambda}=\log h(x)
 $$
+
 Combine above equation we can obtain a result:
 $$
 \log h(x)p(x,\lambda)=-p(x,\lambda)Tr[\frac{\partial f}{\partial x}]-\frac{\partial p}{\partial x}f
 $$
+
 Assuming $p(x,\lambda)$ always exists, the desired PDE:
 $$
 \log h=-div(f)-\frac{\partial \log p}{\partial x}f
 $$
+
 Put this PDE into divergence form by definning  $q(x,\lambda)=p(x,\lambda)f(x,\lambda)$:
 $$
 div(q)=\eta=-p(x,\lambda)\log h(x)
