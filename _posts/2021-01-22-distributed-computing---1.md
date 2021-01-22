@@ -58,7 +58,7 @@ It means that one distributed system consits several components, they are autono
 
 + __Pitfalls:__ What we need to avoid and we should obey the rules following :
 
-      1. network is reliable
+         1. network is reliable
          2. network is secure
          3. network is homogeneous
          4. topology does not change
