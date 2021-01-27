@@ -9,6 +9,7 @@ header-style: text
 header-mask: 
 tags: [distributed optimization]
 mathjax: true
+typora-root-url: paulwu1996.github.io
 ---
 
 # Distributed Optimization Survey
@@ -85,17 +86,18 @@ This family offers much more quicker convergence speed due to Hassian informatio
 
 Attached some tables offered by this survey. In the future, we will discuss each branch of algorithms.
 
-![image-20210127184550235](/Users/paul/Documents/GitHub/PaulWU1996.github.io/img/in-post/image-20210127184550235.png)
+![image-20210127184550235](/img/in-post/image-20210127184550235.png)
 
-![image-20210127184751142](/Users/paul/Documents/GitHub/PaulWU1996.github.io/img/in-post/image-20210127184751142.png)
+![image-20210127184751142](/img/in-post/image-20210127184751142.png)
 
-![image-20210127184901979](/Users/paul/Documents/GitHub/PaulWU1996.github.io/img/in-post/image-20210127184901979.png)
+![image-20210127184901979](/img/in-post/image-20210127184901979.png)
 
-![image-20210127184924852](/Users/paul/Documents/GitHub/PaulWU1996.github.io/img/in-post/image-20210127184924852.png)
+![image-20210127184924852](/img/in-post/image-20210127184924852.png)
 
 [^DGD]:Every agent generates and maintains estimates of the optimal solution of the global optimization problem. These esti- mates are communicated (directly or indirectly) to other agents asynchronously and over a time-varying connectivity structure. Each agent updates his estimates based on local information concerning the estimates received from his immediate neigh- bors and his own cost function using a subgradient method.
 
 [^EXTRA]: EXTRA algortihm contains two steps. The first step agent $i$ updates $x(i)$ based $x(i)=\sum_{j}^{N}w_{ij}x_j(0)-\alpha \bigtriangledown f_i(x_i(0))$, $\alpha$ is fixed step-size and the right of it is gradient of local objective function. The second step agent $i$ updates  $x(k+2)=x_i(k+1) + \sum_{j}^{N}w_{ij}x_j(k+1) - \sum_{j}^{N} \tilde w_{ij}x_j(k) -\alpha ( \bigtriangledown f_i(x_i(k+1)) - \bigtriangledown f_i(x_i(k)))$.  Compared to DGD, EXTRA uses estimates of optimal solution and gradients at the two previous iterations rather than only one previous iteration.
 [^DIGing]: states are upfated as follows: $x_i(k+1)=\sum_{j}^{N}w_{ij}x_j(k)-\alpha y_i(k)$, $y_i(k)=\sum_{j}^{N}w_{ij}y_j(k)+ \bigtriangledown f_i(x_i(k+1)) - \bigtriangledown f_i(x_i(k))$. The variable $y_ i ( k )$ is used instead of the average gradient in first equation and it tracks the average gradient by employing dynamic average consensus.
 [^PI]: each agent performs the following update: $x_i(k+1)=x_i(k)-v_i(k)- \alpha \bigtriangledown f_i(x_i(k))- \beta \sum_{j \in N_i} a_{ij}(x_i(k)-x_j(k))$, $v_i(k+1)=v_i(k)+\alpha \beta \sum_{j \in N_i}a_{ij}(x_i(k)-x_j(k))$. $x_i(k)$ is the local estimate of the global minimizer of agent $i$ at time step $k$.
+
 [^ZGS]: It will update future.
