@@ -30,9 +30,11 @@ Today we use one survey published on Annual Reviews in Control given by Tao Yang
 $N$ agents in networked system, each of agent has a local private convex objective function $f_i(x)$, where $x \in \mathbb{R^n}$ is the optimization variable. The objective of distributed optimization is to minimize a global objective function, which is a sum of the objective functions of all agents:
 
 
+
 $$
 \min_{x \in \mathbb R^n} \sum^{N}_{i=1} f_i(x)
 $$
+
 
 
 in a distributed manner by local computation and communication.
@@ -65,7 +67,7 @@ Each agent performs a consensus step and then a descent step along the local (su
 
 #### 4.1.2 fixed step-sizes
 
-Compare to diminishing step-sizes, fixed step-sizes algortihm can convergence quicker than diminishing step-sizes however Diminishing step-sizes algortihms can offer accurate estimate of global optimal solution. There are two famous and distinct fixed step-sizes algorithms. First is [^EXTRA], the details of it is in [link](https://arxiv.org/pdf/1404.6264.pdf). Second one is [^DIGing], it is based on the combination of the distributed inexact gradient method and the gradient tracking technique. Also, to correct the error caused by the distributed gradient based algorithms based on the proportional-integral ([^PI]) .
+Compare to diminishing step-sizes, fixed step-sizes algortihm can convergence quicker than diminishing step-sizes however Diminishing step-sizes algortihms can offer accurate estimate of global optimal solution. There are two famous and distinct fixed step-sizes algorithms. First is EXTRA [^EXTRA], the details of it is in [link](https://arxiv.org/pdf/1404.6264.pdf). Second one is DIGing [^DIGing], it is based on the combination of the distributed inexact gradient method and the gradient tracking technique. Also, to correct the error caused by the distributed gradient based algorithms based on the proportional-integral (PI) [^PI] .
 
 ### 4.2 Continuous-time algorithm
 
@@ -77,7 +79,7 @@ Distributed PI algorithm, refer to PI in previous. It is motivated by a feedback
 
 #### 4.2.2 second order gradient based
 
-This family offers much more quicker convergence speed due to Hassian information. Zero-Gradient-Sum Algorithm ([^ZGS]) is one distinct method.
+This family offers much more quicker convergence speed due to Hassian information. Zero-Gradient-Sum Algorithm (ZGS) [^ZGS] is one distinct method.
 
 ## Table Resource
 
