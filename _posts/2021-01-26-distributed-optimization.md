@@ -1,5 +1,5 @@
 ---
- layout: post
+layout: post
 title: "distributed optimization"
 subtitle: "First survey about this region"
 date: 2021-01-26
