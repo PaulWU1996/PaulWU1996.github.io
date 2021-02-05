@@ -6,6 +6,7 @@ date: 2021-02-05
 author: Peipei WU
 tags: [distributed optimization]
 mathjax: true
+typora-root-url:paulwu1996.github.io
 ---
 
 # Notes about ADMM Algorithm Family
@@ -205,7 +206,7 @@ __2019__
 
 Today, I introduced and discussed ADMM algorithm. And I list some literatures published by Boyd and his team. Unfortunately, I did not complete whole literature survey of his works. Thus, I will keep updating this note until all Boyd's works summarized here.  Thank you for your reading!
 
-[^1]: __AllReduce__ is an operation that reduces the target arrays in all processes to a single array and returns the resultant array to all processes.
+[^1]: ![fig_1](/img/in_post/fig_1.png)1 __AllReduce__ is an operation that reduces the target arrays in all processes to a single array and returns the resultant array to all processes. ↩
 [^2]: <https://web.stanford.edu/~boyd/papers/auto_repair_cvx.html>
 [^3]: <https://web.stanford.edu/~boyd/papers/cdc_20.html>
 [^4]: <https://web.stanford.edu/~boyd/papers/strat_models.html>
