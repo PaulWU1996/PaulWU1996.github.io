@@ -77,7 +77,7 @@ From __Scaled Form__, we can clearly see that each iteration is made up by 3 ste
 When conditions are satisfied:
 
 1. $f$ and $g$ are closed, proper and convex
-2. Lagrangian owns __saddle point__
+2. Lagrangian owns ___saddle point__
 
 ADMM can be proved convergence. I will not illustrate the prove process here, you can find it in appendix of ADMM survey written by Boyd in 2011. The sentence I want to say here is that ADMM will convergence slowly under high accurately demand, otherwise it can convergence sufficiently under middle accurately demand.  
 
@@ -109,49 +109,48 @@ Thus, it is clearly that variable $x_i$ in each local objective functions must b
 
 $$
 \begin{align}
-& x^{k+1}= \arg \min_{x_i} (f_i(x_i)+(p/2)\|x_i+z^k+u_i^k\|^2_2) \\
-& z^{k+1}= \arg \min_z (g(z)+(Np/2)\|z- \overline x^{k+1} - \overline u^k\|^2_2) \\
+& x^{k+1}= \arg \min_{x_i} (f_i(x_i)+(p/2)\||x_i+z^k+u_i^k\||^2_2) \\
+& z^{k+1}= \arg \min_z (g(z)+(Np/2)\||z- \overline x^{k+1} - \overline u^k\||^2_2) \\
 & u^{k+1}= u^k +x^{k+1}+z^{k+1}\\
+\\
 &\overline x=(1/N)\sum_{i=1}^N x_i\\
 &\overline u=(1/N)\sum_{i=1}^N u_i\\
 \end{align}
 $$
-
-
 The most significant benefit in this iteration form is that we can solve it in parallel or distributed way. When we compute and update variable $x$ and $u$, they can be refreshed parallelly due to it is independent to other variables. In other words, if we want to calculate $x$, no more variable values are waited, $z^k$ and $u_i^k$ are collected from previous iteration, thus no need to wait updated value in current iteration. Same to variable $u$. In these 3 steps, only second step z-updating needs to wait first step finished.
 
 
 
 ### 2.4 Distributed Implementation
 
-In this section, two different description model are discussed. MPI and MapReduce are two very famous models to represent distributed system.
+In this section 
 
 
 
-___MPI___
+__MPI__
 
 Intialize N processes, along with $x_i$ , $u_i$ , $r_i$ , $z$
 
 __Repeat__
 
 1. ​       Update $u_i=u_i+r_i$
-2. ​       Update $x_i= \arg \min_x (f_i(x)+(p/2)\|\| x-z+u_i \|\|^2_2)$
-3. ​       Let $w=x_i+u_i$ and $t= \|\|r_i\|\|^2_2$
+2. ​       Update $x_i= \arg \min_x (f_i(x)+(p/2)\||x-z+u_i\||^2_2)$
+3. ​       Let $w=x_i+u_i$ and $t=\||r_i\||^2_2$
 4. ​       Allreduce[^1] $w$ and $t$ 
 5. ​       Let $z^{prev}=z$ and update $z = prox_{g,Np}(w/N))$
-6. ​       __exit if__  $p\sqrt{N}\|\|z-z^{precv}\|\|_2 \le \xi^{conv}$ and $\sqrt{t} \le \xi^feas$
+6. ​       __exit if__  $p\sqrt{N}\||z-z^{precv}\||_2 \le \xi^{conv}$ and $\sqrt{t} \le \xi^feas$
 7. ​       Update $r_i=x_i-z$
 
 
 
-___MapReduce( Recommend!!!!)___
+MapReduce( Recommend!!!!)
 
 __Function__ map(key $i$, dataset $D_i$):
 
 1.  Read $(x_i, U_i, \hat z)$ from distributed database
-2. Compute $z= \arg \min_z (g(z)+(Np/2)\|z-\hat z/N\|^2_2)$
+2. Compute $z= \arg \min_z (g(z)+(Np/2)|z-\hat z/N|^2_2)$
 3. Update $u_i=u_i+x_i-z$
-4. Update $x_i= \arg \min_x (f_i(x)+(p/2)\|x-z+u_i\|^2_2)$
+4. Update $x_i= \arg \min_x (f_i(x)+(p/2)|x-z+u_i|^2_2)$
 5. Emit(key ___CENTRAL___, record($x_i$,$u_i$))
 
 __EndFunction__
@@ -186,13 +185,19 @@ __2020__
 
 ___
 
-| Work                                                         | Focus problem | Contribution                                   |
-| ------------------------------------------------------------ | ------------- | ---------------------------------------------- |
-| Embedded Convex Optimization for Control[^3]                 |               | This talk summaries advances in this 10 years. |
-| A Distributed Method for Fitting Laplacian Regularized Stratified Models[^4] |               |                                                |
-|                                                              |               |                                                |
-|                                                              |               |                                                |
-|                                                              |               |                                                |
+| Work                                                         | Focus problem                                                | Contribution                                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Embedded Convex Optimization for Control[^3]                 |                                                              | This talk summaries advances in this 10 years.               |
+| A Distributed Method for Fitting Laplacian Regularized Stratified Models[^4] | How to fit stratified models in efficient way, which needs lots of hyper-parameters to have a test. | first describe stratified model fitting with Laplacian regularization as a convex optimization problem, with one model parameter vector for every value of the stratification feature. then use ADMM and calculate each features in parallely. |
+
+__2019__
+
+---
+
+| Work                                                         | Focus problem                                                | Contribution                                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Distributed Majorization-Minimization for Laplacian Regularized Problems[^5] | Apply MM algorithm into parallel way.                        | develop a distributed method for minimizing a block-separable convex objective with Laplacian regularization. derive a diagonal quadratic majorizer of the given Laplacian objective term, which has the benefit of separability. This separability allows for the minimization step in our MM algorithm to be carried out in parallel on a block-by-block basis. |
+| A Distributed Method for Optimal Capacity Reservation[^6]    | seek to minimize a linear reservation cost. This problem is also referred to as the network design problem. | present an iterative method for solving the capacity reservation problem based on ADMM. Unlike to general ADMM, method maintains a feasible point at each iteration (this can offer bound) |
 
 
 
@@ -204,3 +209,5 @@ Today, I introduced and discussed ADMM algorithm. And I list some literatures pu
 [^2]: <https://web.stanford.edu/~boyd/papers/auto_repair_cvx.html>
 [^3]: <https://web.stanford.edu/~boyd/papers/cdc_20.html>
 [^4]: <https://web.stanford.edu/~boyd/papers/strat_models.html>
+[^5]: <https://web.stanford.edu/~boyd/papers/mm_dist_lapl.html>
+[^6]: <https://web.stanford.edu/~boyd/papers/opt_cap_res.html>
