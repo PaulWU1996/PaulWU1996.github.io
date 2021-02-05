@@ -10,7 +10,7 @@ mathjax: true
 
 # Notes about ADMM Algorithm Family
 
-# ## 1 Abstract
+# 1 Abstract
 
 Hi, guys! Almost half week passed, I am going to published new note about ADMM and this note will be the report for this weekly meeting with my supervisor. In the first half part, I will introduce and explain ADMM algorithm. And second half, I will list Boyd's new works and summary them. Look forward any comments and suggestions! Also, I will complete the comment function this weekend, all readers can comment directly on this page and emails are still welcome. 
 
