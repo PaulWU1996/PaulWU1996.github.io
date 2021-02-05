@@ -77,7 +77,7 @@ From __Scaled Form__, we can clearly see that each iteration is made up by 3 ste
 When conditions are satisfied:
 
 1. $f$ and $g$ are closed, proper and convex
-2. Lagrangian owns ___saddle point__
+2. Lagrangian owns __saddle point__
 
 ADMM can be proved convergence. I will not illustrate the prove process here, you can find it in appendix of ADMM survey written by Boyd in 2011. The sentence I want to say here is that ADMM will convergence slowly under high accurately demand, otherwise it can convergence sufficiently under middle accurately demand.  
 
@@ -109,48 +109,49 @@ Thus, it is clearly that variable $x_i$ in each local objective functions must b
 
 $$
 \begin{align}
-& x^{k+1}= \arg \min_{x_i} (f_i(x_i)+(p/2)\||x_i+z^k+u_i^k\||^2_2) \\
-& z^{k+1}= \arg \min_z (g(z)+(Np/2)\||z- \overline x^{k+1} - \overline u^k\||^2_2) \\
+& x^{k+1}= \arg \min_{x_i} (f_i(x_i)+(p/2)\|x_i+z^k+u_i^k\|^2_2) \\
+& z^{k+1}= \arg \min_z (g(z)+(Np/2)\|z- \overline x^{k+1} - \overline u^k\|^2_2) \\
 & u^{k+1}= u^k +x^{k+1}+z^{k+1}\\
-\\
 &\overline x=(1/N)\sum_{i=1}^N x_i\\
 &\overline u=(1/N)\sum_{i=1}^N u_i\\
 \end{align}
 $$
+
+
 The most significant benefit in this iteration form is that we can solve it in parallel or distributed way. When we compute and update variable $x$ and $u$, they can be refreshed parallelly due to it is independent to other variables. In other words, if we want to calculate $x$, no more variable values are waited, $z^k$ and $u_i^k$ are collected from previous iteration, thus no need to wait updated value in current iteration. Same to variable $u$. In these 3 steps, only second step z-updating needs to wait first step finished.
 
 
 
 ### 2.4 Distributed Implementation
 
-In this section 
+In this section, two different description model are discussed. MPI and MapReduce are two very famous models to represent distributed system.
 
 
 
-__MPI__
+___MPI___
 
 Intialize N processes, along with $x_i$ , $u_i$ , $r_i$ , $z$
 
 __Repeat__
 
 1. ​       Update $u_i=u_i+r_i$
-2. ​       Update $x_i= \arg \min_x (f_i(x)+(p/2)\||x-z+u_i\||^2_2)$
-3. ​       Let $w=x_i+u_i$ and $t=\||r_i\||^2_2$
+2. ​       Update $x_i= \arg \min_x (f_i(x)+(p/2)\|\| x-z+u_i \|\|^2_2)$
+3. ​       Let $w=x_i+u_i$ and $t= \|\|r_i\|\|^2_2$
 4. ​       Allreduce[^1] $w$ and $t$ 
 5. ​       Let $z^{prev}=z$ and update $z = prox_{g,Np}(w/N))$
-6. ​       __exit if__  $p\sqrt{N}\||z-z^{precv}\||_2 \le \xi^{conv}$ and $\sqrt{t} \le \xi^feas$
+6. ​       __exit if__  $p\sqrt{N}\|\|z-z^{precv}\|\|_2 \le \xi^{conv}$ and $\sqrt{t} \le \xi^feas$
 7. ​       Update $r_i=x_i-z$
 
 
 
-MapReduce( Recommend!!!!)
+___MapReduce( Recommend!!!!)___
 
 __Function__ map(key $i$, dataset $D_i$):
 
 1.  Read $(x_i, U_i, \hat z)$ from distributed database
-2. Compute $z= \arg \min_z (g(z)+(Np/2)|z-\hat z/N|^2_2)$
+2. Compute $z= \arg \min_z (g(z)+(Np/2)\|z-\hat z/N\|^2_2)$
 3. Update $u_i=u_i+x_i-z$
-4. Update $x_i= \arg \min_x (f_i(x)+(p/2)|x-z+u_i|^2_2)$
+4. Update $x_i= \arg \min_x (f_i(x)+(p/2)\|x-z+u_i\|^2_2)$
 5. Emit(key ___CENTRAL___, record($x_i$,$u_i$))
 
 __EndFunction__
